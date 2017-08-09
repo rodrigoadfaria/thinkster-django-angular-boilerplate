@@ -33,14 +33,17 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'rest_framework',
     'compressor',
     'authentication',
-    'posts'
+    'posts',
+    'photologue',
+    'sortedm2m'
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -48,12 +51,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
 ROOT_URLCONF = 'thinkster_django_angular_boilerplate.urls'
 
 WSGI_APPLICATION = 'thinkster_django_angular_boilerplate.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -90,6 +92,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, 'media')
+)
+MEDIA_URL = '/media/'
+SITE_ID = 1
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -106,7 +114,13 @@ TEMPLATES = [
         'OPTIONS': {
             'debug': True,
             'context_processors': [
-                "django.contrib.auth.context_processors.auth",
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static'
             ]
          }
     },

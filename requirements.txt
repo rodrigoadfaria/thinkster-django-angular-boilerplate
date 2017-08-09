@@ -8,3 +8,9 @@ drf-nested-routers==0.90.0
 gunicorn==19.7.1
 six==1.10.0
 static3==0.7.0
+
+# Django-photologue and dependencies
+pillow==4.2.1
+django-sortedm2m==1.5.0
+pytz
+django-photologue==3.7
